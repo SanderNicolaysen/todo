@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, StyleSheet, View, TextStyle } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import { TodoType } from '../../views';
@@ -24,6 +24,8 @@ export const TodoItem: React.FC<TodoItemProps> = ({
           disabled={false}
           value={isChecked}
           onValueChange={() => onToggleTodoPress(todo.id)}
+          onAnimationType="bounce"
+          animationDuration={0.3}
         />
         <Text style={[styles.label, textStyles]}>{label}</Text>
       </View>
@@ -35,21 +37,20 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '95%',
-    marginBottom: 7,
+    marginBottom: 5,
   },
   checkboxContainer: {
     flexDirection: 'row',
     columnGap: 20,
     alignItems: 'center',
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 30,
     width: '100%',
     backgroundColor: 'white',
-    borderRadius: 12,
+    borderRadius: 10,
   },
   label: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'gray',
   },
 });

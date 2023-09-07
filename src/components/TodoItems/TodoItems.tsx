@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { TodoItem } from '../TodoItem';
 import { TodoType } from '../../views';
 
@@ -12,7 +12,7 @@ export const TodoItems: React.FC<TodoItemsProps> = ({
   onToggleTodoPress,
 }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -20,7 +20,7 @@ export const TodoItems: React.FC<TodoItemsProps> = ({
           onToggleTodoPress={onToggleTodoPress}
         />
       ))}
-    </View>
+    </ScrollView>
   );
 };
 
