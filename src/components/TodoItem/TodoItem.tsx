@@ -5,9 +5,13 @@ import { TodoType } from '../../views';
 
 type TodoItemProps = {
   todo: TodoType;
+  onToggleTodoPress: (id: string) => void;
 };
 
-export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
+export const TodoItem: React.FC<TodoItemProps> = ({
+  todo,
+  onToggleTodoPress,
+}) => {
   const { label, isChecked } = todo;
   const textStyles: TextStyle = {
     textDecorationLine: todo.isChecked ? 'line-through' : 'none',
@@ -19,9 +23,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         <CheckBox
           disabled={false}
           value={isChecked}
-          onValueChange={(newValue) => () => {
-            return;
-          }}
+          onValueChange={() => onToggleTodoPress(todo.id)}
         />
         <Text style={[styles.label, textStyles]}>{label}</Text>
       </View>
@@ -31,10 +33,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '95%',
+    marginBottom: 7,
   },
   checkboxContainer: {
     flexDirection: 'row',
