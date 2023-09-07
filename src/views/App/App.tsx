@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Login } from '../../views';
+import { Login, Todo } from '../../views';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Login />
+      <Todo />
     </View>
   );
 }
@@ -14,6 +14,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F7F4F3',
   },
 });
