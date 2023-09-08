@@ -1,21 +1,23 @@
 import React from 'react';
-import { Text, StyleSheet, View, TextStyle } from 'react-native';
+import { Text, StyleSheet, View, TextStyle, Pressable } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import { TodoType } from '../../views';
 import { AntDesign } from '@expo/vector-icons';
 
 type TodoItemProps = {
   todo: TodoType;
-  onToggleTodoPress: (id: string) => void;
+  onTogglePress: (id: string) => void;
   onRemovePress: (id: string) => void;
+  onEditPress: (id: string, text: string) => void;
 };
 
 export const TodoItem: React.FC<TodoItemProps> = ({
   todo,
-  onToggleTodoPress,
+  onTogglePress,
   onRemovePress,
+  onEditPress,
 }) => {
-  const { id, label, isChecked } = todo;
+  const { id, text, isChecked } = todo;
   const textStyles: TextStyle = {
     textDecorationLine: todo.isChecked ? 'line-through' : 'none',
   };
@@ -26,11 +28,13 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         <CheckBox
           disabled={false}
           value={isChecked}
-          onValueChange={() => onToggleTodoPress(todo.id)}
+          onValueChange={() => onTogglePress(id)}
           onAnimationType="bounce"
           animationDuration={0.3}
         />
-        <Text style={[styles.label, textStyles]}>{label}</Text>
+        <Pressable onPress={() => onEditPress(id, text)}>
+          <Text style={[styles.label, textStyles]}>{text}</Text>
+        </Pressable>
       </View>
       <AntDesign
         name="delete"

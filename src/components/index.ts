@@ -1,4 +1,6 @@
 export { Button } from './Button';
 export { TodoItem } from './TodoItem';
 export { TodoItems } from './TodoItems';
-export { TodoInput } from './TodoInput';
+export { AddTodoInput } from './AddTodoInput';
+export { EditTodoInput } from './EditTodoInput';
+export { KeyboardAvoidingViewInput } from './KeyboardAvoidingViewInput';
