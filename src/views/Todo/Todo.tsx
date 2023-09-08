@@ -1,6 +1,6 @@
 import { View, Button, StyleSheet, SafeAreaView, Text } from 'react-native';
 import { TodoItems, TodoInput } from '../../components';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -42,13 +42,22 @@ export const Todo: React.FC<TodoProps> = ({ logout }) => {
     setTodos(updatedTodos);
   };
 
+  const handleRemoveTodo = (id: string) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>TODO</Text>
         <Button color="#AB2310" title="Logout" onPress={logout} />
       </View>
-      <TodoItems todos={todos} onToggleTodoPress={handleToggleTodo} />
+      <TodoItems
+        todos={todos}
+        onToggleTodoPress={handleToggleTodo}
+        onRemovePress={handleRemoveTodo}
+      />
       <TodoInput onAddTodoPress={handleAddTodo} />
     </SafeAreaView>
   );

@@ -5,11 +5,13 @@ import { TodoType } from '../../views';
 type TodoItemsProps = {
   todos: TodoType[];
   onToggleTodoPress: (id: string) => void;
+  onRemovePress: (id: string) => void;
 };
 
 export const TodoItems: React.FC<TodoItemsProps> = ({
   todos,
   onToggleTodoPress,
+  onRemovePress,
 }) => {
   return (
     <ScrollView style={styles.container}>
@@ -18,6 +20,7 @@ export const TodoItems: React.FC<TodoItemsProps> = ({
           key={todo.id}
           todo={todo}
           onToggleTodoPress={onToggleTodoPress}
+          onRemovePress={onRemovePress}
         />
       ))}
     </ScrollView>
