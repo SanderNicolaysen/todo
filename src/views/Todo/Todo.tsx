@@ -1,6 +1,6 @@
-import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
+import { View, Button, StyleSheet, SafeAreaView, Text } from 'react-native';
 import { TodoItems, TodoInput } from '../../components';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -10,7 +10,11 @@ export type TodoType = {
   isChecked: boolean;
 };
 
-export const Todo = () => {
+type TodoProps = {
+  logout: () => void;
+};
+
+export const Todo: React.FC<TodoProps> = ({ logout }) => {
   const [todos, setTodos] = useState<TodoType[]>([]);
 
   const handleAddTodo = (todoLabel: string) => {
@@ -40,7 +44,10 @@ export const Todo = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>TODO</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>TODO</Text>
+        <Button color="#AB2310" title="Logout" onPress={logout} />
+      </View>
       <TodoItems todos={todos} onToggleTodoPress={handleToggleTodo} />
       <TodoInput onAddTodoPress={handleAddTodo} />
     </SafeAreaView>
@@ -51,6 +58,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     margin: 10,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   header: {
     fontSize: 30,

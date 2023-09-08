@@ -2,8 +2,11 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from '../../components';
 const img = require('../../assets/images/todo.png');
 
-export const Login = () => {
-  const handleLogin = () => {};
+type LoginProps = {
+  onAuthenticatePress: () => Promise<void>;
+};
+
+export const Login: React.FC<LoginProps> = ({ onAuthenticatePress }) => {
   return (
     <View>
       <View style={styles.imageContainer}>
@@ -15,7 +18,7 @@ export const Login = () => {
           Elevate your productivity with our ToDo app. Effortlessly manage
           tasks, anytime, anywhere.
         </Text>
-        <Button onPress={handleLogin} title="Login" />
+        <Button onPress={onAuthenticatePress} title="Login" />
       </View>
     </View>
   );
