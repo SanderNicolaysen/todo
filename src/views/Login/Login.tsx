@@ -8,7 +8,7 @@ type LoginProps = {
 
 export const Login: React.FC<LoginProps> = ({ onAuthenticatePress }) => {
   return (
-    <View>
+    <View testID="loginComponentId">
       <View style={styles.imageContainer}>
         <Image source={img} style={styles.image} />
       </View>

@@ -8,7 +8,10 @@ type ButtonProps = {
 
 export const Button: React.FC<ButtonProps> = ({ onPress, title }) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [pressed ? { opacity: 0.9 } : {}, styles.button]}
+    >
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );

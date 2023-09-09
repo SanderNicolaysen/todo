@@ -32,7 +32,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({
           onAnimationType="bounce"
           animationDuration={0.3}
         />
-        <Pressable onPress={() => onEditPress(id, text)}>
+        <Pressable
+          onPress={() => onEditPress(id, text)}
+          testID={`editTodo-${id}`}
+        >
           <Text style={[styles.label, textStyles]}>{text}</Text>
         </Pressable>
       </View>
@@ -41,6 +44,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         size={24}
         color="gray"
         onPress={() => onRemovePress(id)}
+        testID={`deleteTodo-${id}`}
       />
     </View>
   );

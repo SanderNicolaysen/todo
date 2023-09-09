@@ -11,10 +11,10 @@ export type TodoType = {
 };
 
 type TodoProps = {
-  logout: () => void;
+  onLogout: () => void;
 };
 
-export const Todo: React.FC<TodoProps> = ({ logout }) => {
+export const Todo: React.FC<TodoProps> = ({ onLogout }) => {
   const [todos, setTodos] = useState<TodoType[]>([]);
 
   const [addTodoText, setAddTodoText] = useState('');
@@ -24,7 +24,7 @@ export const Todo: React.FC<TodoProps> = ({ logout }) => {
   const [isEditingTodo, setIsEditingTodo] = useState(false);
   const [editingTodoId, seteditingTodoId] = useState('');
 
-  const handleAddTodo = (text: string) => {
+  const handleAddTodoPress = (text: string) => {
     if (text.trim() === '') {
       return;
     }
@@ -40,15 +40,15 @@ export const Todo: React.FC<TodoProps> = ({ logout }) => {
     setAddTodoText('');
   };
 
-  const handleOpenAddTodo = () => {
+  const handleOpenAddTodoPress = () => {
     setIsAddingTodo(true);
   };
 
-  const handleCloseAddTodo = () => {
+  const handleCloseAddTodoPress = () => {
     setIsAddingTodo(false);
   };
 
-  const handleEditTodo = (id: string, text: string) => {
+  const handleEditTodoPress = (id: string, text: string) => {
     if (text.trim() === '') {
       return;
     }
@@ -65,17 +65,17 @@ export const Todo: React.FC<TodoProps> = ({ logout }) => {
     setEditTodoText('');
   };
 
-  const handleEditPress = (id: string, text: string) => {
+  const handleOpenEditTodoPress = (id: string, text: string) => {
     setEditTodoText(text);
     seteditingTodoId(id);
     setIsEditingTodo(true);
   };
 
-  const handleCloseEditTodo = () => {
+  const handleCloseEditTodoPress = () => {
     setIsEditingTodo(false);
   };
 
-  const handleToggleTodo = (id: string) => {
+  const handleToggleTodoPress = (id: string) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, isChecked: !todo.isChecked };
@@ -86,36 +86,36 @@ export const Todo: React.FC<TodoProps> = ({ logout }) => {
     setTodos(updatedTodos);
   };
 
-  const handleRemoveTodo = (id: string) => {
+  const handleRemoveTodoPress = (id: string) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} testID="todoComponentId">
       <View style={styles.headerContainer}>
         <Text style={styles.header}>TODO</Text>
-        <Button color="#AB2310" title="Logout" onPress={logout} />
+        <Button color="#AB2310" title="Logout" onPress={onLogout} />
       </View>
       <TodoItems
         todos={todos}
-        onTogglePress={handleToggleTodo}
-        onRemovePress={handleRemoveTodo}
-        onEditPress={handleEditPress}
+        onTogglePress={handleToggleTodoPress}
+        onRemovePress={handleRemoveTodoPress}
+        onEditPress={handleOpenEditTodoPress}
       />
       {isEditingTodo ? (
         <EditTodoInput
-          onEditTodoPress={(text) => handleEditTodo(editingTodoId, text)}
+          onEditTodoPress={(text) => handleEditTodoPress(editingTodoId, text)}
           text={editTodoText}
           setText={setEditTodoText}
           isOpen={isEditingTodo}
-          onClose={handleCloseEditTodo}
+          onClose={handleCloseEditTodoPress}
         />
       ) : (
         <AddTodoInput
-          onAddTodoPress={handleAddTodo}
-          onOpen={handleOpenAddTodo}
-          onClose={handleCloseAddTodo}
+          onAddTodoPress={handleAddTodoPress}
+          onOpen={handleOpenAddTodoPress}
+          onClose={handleCloseAddTodoPress}
           text={addTodoText}
           setText={setAddTodoText}
           isOpen={isAddingTodo}

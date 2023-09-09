@@ -22,7 +22,7 @@ export const AddTodoInput: React.FC<AddTodoInputProps> = ({
   return (
     <>
       {!isOpen ? (
-        <Pressable style={styles.container} onPress={onOpen}>
+        <Pressable style={styles.container} onPress={onOpen} testID="addTaskId">
           <Text style={styles.plus}>+</Text>
           <Text style={styles.description}>
             {text.trim() ? text : 'Add task'}

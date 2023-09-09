@@ -25,14 +25,14 @@ export default function App() {
     setIsAuthenticated(result.success);
   };
 
-  const logout = () => {
+  const handleLogoutPress = () => {
     setIsAuthenticated(false);
   };
 
   return (
     <View style={styles.container}>
       {isAuthenticated ? (
-        <Todo logout={logout} />
+        <Todo onLogout={handleLogoutPress} />
       ) : (
         <Login onAuthenticatePress={handleAuthenticate} />
       )}

@@ -37,6 +37,7 @@ export const KeyboardAvoidingViewInput: React.FC<
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <TextInput
+        testID='keyboardAvoidingViewInputId'
         style={styles.textInput}
         autoFocus
         onChangeText={setText}
