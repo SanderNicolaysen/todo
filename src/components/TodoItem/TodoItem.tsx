@@ -35,8 +35,9 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         <Pressable
           onPress={() => onEditPress(id, text)}
           testID={`editTodo-${id}`}
+          style={styles.textContainer}
         >
-          <Text style={[styles.label, textStyles]}>{text}</Text>
+          <Text style={[styles.text, textStyles]}>{text}</Text>
         </Pressable>
       </View>
       <AntDesign
@@ -69,10 +70,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  label: {
+  text: {
     fontSize: 20,
     color: 'gray',
-    flex: 1,
     marginRight: 10,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
