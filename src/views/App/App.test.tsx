@@ -7,6 +7,9 @@ import * as LocalAuthentication from 'expo-local-authentication';
 jest.mock('expo-local-authentication', () => ({
   getEnrolledLevelAsync: jest.fn(),
   authenticateAsync: jest.fn(),
+  SecurityLevel: {
+    NONE: 0,
+  },
 }));
 
 // Mock Linking's openURL and sendIntent methods
