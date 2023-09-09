@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, Linking, Platform } from 'react-native';
 import { Login, Todo } from '../../views';
@@ -34,13 +35,16 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      {isAuthenticated ? (
-        <Todo onLogout={handleLogoutPress} />
-      ) : (
-        <Login onAuthenticatePress={handleAuthenticate} />
-      )}
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <View style={styles.container}>
+        {isAuthenticated ? (
+          <Todo onLogout={handleLogoutPress} />
+        ) : (
+          <Login onAuthenticatePress={handleAuthenticate} />
+        )}
+      </View>
+    </>
   );
 }
 

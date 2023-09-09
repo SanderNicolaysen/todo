@@ -14,10 +14,28 @@ type TodoProps = {
   onLogout: () => void;
 };
 
+const dummyData: TodoType[] = [
+  {
+    id: '1',
+    text: 'First item',
+    isChecked: false,
+  },
+  {
+    id: '2',
+    text: 'Second item',
+    isChecked: false,
+  },
+  {
+    id: '3',
+    text: 'Third item',
+    isChecked: false,
+  },
+];
+
 // This component is responsible for managing and displaying a list of todo items,
 // allowing users to add, edit, toggle, and remove items. It also handles user logout.
 export const Todo: React.FC<TodoProps> = ({ onLogout }) => {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>(dummyData);
 
   const [addTodoText, setAddTodoText] = useState('');
   const [isAddingTodo, setIsAddingTodo] = useState(false);

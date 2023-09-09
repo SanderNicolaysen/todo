@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View, TextStyle, Pressable } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import Checkbox from 'expo-checkbox';
 import { TodoType } from '../../views';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -25,12 +25,11 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.checkboxContainer}>
-        <CheckBox
+        <Checkbox
           disabled={false}
           value={isChecked}
           onValueChange={() => onTogglePress(id)}
-          onAnimationType="bounce"
-          animationDuration={0.3}
+          style={styles.checkbox}
         />
         <Pressable
           onPress={() => onEditPress(id, text)}
@@ -69,6 +68,11 @@ const styles = StyleSheet.create({
     columnGap: 20,
     alignItems: 'center',
     flex: 1,
+  },
+  checkbox: {
+    width: 30,
+    height: 30,
+    borderRadius: 30,
   },
   text: {
     fontSize: 20,

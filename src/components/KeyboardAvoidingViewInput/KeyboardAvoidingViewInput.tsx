@@ -45,6 +45,7 @@ export const KeyboardAvoidingViewInput: React.FC<
         onChangeText={setText}
         value={text}
         placeholder={placeholder}
+        placeholderTextColor="gray"
         onSubmitEditing={() => onSubmit(text)}
         multiline={false}
       />

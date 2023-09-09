@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/checkbox": "^0.5.16",
     "expo": "~49.0.8",
     "expo-checkbox": "~2.4.0",
     "expo-local-authentication": "~13.4.1",
