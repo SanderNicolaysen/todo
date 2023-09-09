@@ -11,6 +11,7 @@ type AddTodoInputProps = {
   onClose: () => void;
 };
 
+// Component resposible for adding a new Todo.
 export const AddTodoInput: React.FC<AddTodoInputProps> = ({
   onAddTodoPress,
   text,

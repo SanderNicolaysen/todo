@@ -6,6 +6,8 @@ type LoginProps = {
   onAuthenticatePress: () => Promise<void>;
 };
 
+// Login screen will be the first screen users see.
+// The user will have to login and authenticate with local authentication to enter the todo screen.
 export const Login: React.FC<LoginProps> = ({ onAuthenticatePress }) => {
   return (
     <View testID="loginComponentId">

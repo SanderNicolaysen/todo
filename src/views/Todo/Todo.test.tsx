@@ -6,6 +6,7 @@ const taskId = '123456789';
 const taskName = 'Sample task';
 const editedTaskName = 'Edited sample task';
 
+// Mock the UUID library to provide a predictable task ID.
 jest.mock('uuid', () => ({ v4: () => taskId }));
 
 // Helper function to add a task
@@ -16,6 +17,8 @@ const addTask = (component: RenderResult, taskName: string) => {
   fireEvent(taskInput, 'submitEditing');
 };
 
+// This test suite focuses on testing the behavior of the <Todo /> component,
+// including adding, deleting, and editing tasks within the todo list.
 describe('<Todo />', () => {
   let component: RenderResult;
 

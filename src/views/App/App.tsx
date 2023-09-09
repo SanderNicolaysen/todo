@@ -1,15 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, Linking, Platform } from 'react-native';
 import { Login, Todo } from '../../views';
 import * as LocalAuthentication from 'expo-local-authentication';
 
+// App component manages user authentication and displays either the Login or Todo component based on authentication status.
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleAuthenticate = async () => {
     const enrolledLevel = await LocalAuthentication.getEnrolledLevelAsync();
-    if (enrolledLevel === 0) {
+
+    // If there are no enrolled authentication, open security settings for the user.
+    if (enrolledLevel === LocalAuthentication.SecurityLevel.NONE) {
       Platform.OS === 'ios'
         ? await Linking.openURL('App-Prefs:Password')
         : await Linking.sendIntent('android.settings.SECURITY_SETTINGS');
@@ -17,11 +19,13 @@ export default function App() {
       return;
     }
 
+    // Authenticate the user using biometric authentication, pincode or password
     const result = await LocalAuthentication.authenticateAsync({
       promptMessage: 'Authenticate',
       fallbackLabel: 'Enter password',
     });
 
+    // Update the authentication status based on the result.
     setIsAuthenticated(result.success);
   };
 

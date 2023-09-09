@@ -15,6 +15,8 @@ type KeyboardAvoidingViewInputProps = {
   onClose: () => void;
 };
 
+// Component which will open the Keyboard with an input field above it.
+// This component is used to add or edit a todo item.
 export const KeyboardAvoidingViewInput: React.FC<
   KeyboardAvoidingViewInputProps
 > = ({ text, setText, onSubmit, placeholder, onClose }) => {
@@ -37,7 +39,7 @@ export const KeyboardAvoidingViewInput: React.FC<
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <TextInput
-        testID='keyboardAvoidingViewInputId'
+        testID="keyboardAvoidingViewInputId"
         style={styles.textInput}
         autoFocus
         onChangeText={setText}

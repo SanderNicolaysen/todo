@@ -19,6 +19,7 @@ const taskId = '123456789';
 // Mock uuid random Id generator
 jest.mock('uuid', () => ({ v4: () => taskId }));
 
+// This test suite focuses on testing the authentication logic and showing the correct screen.
 describe('<App />', () => {
   afterEach(() => {
     jest.clearAllMocks();

@@ -6,6 +6,7 @@ type ButtonProps = {
   title: string;
 };
 
+// Button component to make sure it looks the same on Android and IOS
 export const Button: React.FC<ButtonProps> = ({ onPress, title }) => {
   return (
     <Pressable
