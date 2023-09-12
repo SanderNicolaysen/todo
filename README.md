@@ -1,7 +1,5 @@
 # To Do
 
-This project was created as part of a take-home assignment.
-
 This application implement a secure TODO list application with a bare React Native project and Expo local-authentication module.
 Users are able to add, update, and delete items in the list
 
